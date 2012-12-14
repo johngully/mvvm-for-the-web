@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../../Content/Default.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+    <script src="../../Scripts/knockout-2.2.0.js"></script>
+    <script src="../../Scripts/knockout.mapping-latest.js"></script>
+    <script src="../../Scripts/knockout-postbox.min.js"></script>
+    <script src="../knockout.bindingHelpers.js"></script>
+    <script src="../Services/OrdersService.js"></script>
+    <script src="../ViewModels/OrderViewModel.js"></script>
+    <title>Order</title>
+</head>
+<body>
+    <form id="OrderView" data-bind="submit: save">
+        <header>        
+            <h2>Order Editor</h2>
+            <input type="submit" value="Save" class="primary" />
+        </header>
+
+        <section data-bind="with: entity">
+            <ul id="OrderInformation" class="column">
+                <li>
+                    <label>Order Number</label>
+                    <input type="text" data-bind="value: OrderNumber" />
+                </li>
+
+            </ul>
+            <ul id="ShipmentInformation" class="column">
+                <li>
+                    <label>Ship Name</label>
+                    <input type="text" data-bind="value: ShipName" />
+                </li>
+                <li>
+                    <label>Ship Address</label>
+                    <input type="text" data-bind="value: ShipAddress" />
+                </li>
+                <li>
+                    <div class="inline medium">
+                        <label>City</label>
+                        <input type="text" data-bind="value: ShipCity" />
+                    </div><div class="inline small">
+                        <label>State</label>
+                        <input type="text" data-bind="value: ShipState" />
+                    </div><div class="inline small">
+                        <label>Zip</label>
+                        <input type="text" data-bind="value: ShipZip" />
+                    </div>
+                </li>
+            </ul>
+            <div class="column spacer" />
+            <ul id="OrderDates" class="column">
+                <li>
+                    <label>Order Date</label>
+                    <input type="date" data-bind="dateValue: OrderDate" />
+                </li>
+                <li>
+                    <label>Required Date</label>
+                    <input type="date" data-bind="dateValue: RequiredDate" />
+                </li>
+                <li>
+                    <label>Shipped Date</label>
+                    <input type="date" data-bind="dateValue: ShipDate" />
+                </li>
+            </ul>
+        </section>
+    </form>
+    </div>
+
+<script type="text/javascript">
+    $().ready(function () {
+        ri.orderViewModel.init(ri.ordersService);
+        ko.applyBindings(ri.orderViewModel, $("#OrderView").get(0));
+        ri.orderViewModel.load();
+    });
+</script>
+</body>
+</html>

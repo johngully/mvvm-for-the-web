@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../../Content/Default.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+    <script src="../../Scripts/knockout-2.2.0.js"></script>
+    <script src="../../Scripts/knockout.mapping-latest.js"></script>
+    <script src="../../Scripts/knockout-postbox.min.js"></script>
+    <script src="../knockout.bindingHelpers.js"></script>
+    <script src="../Services/OrdersService.js"></script>
+    <script src="../ViewModels/OrderManagerViewModel.js"></script>
+    <script src="../ViewModels/MessagingViewModel.js"></script>
+    <script src="../ViewModels/OrdersViewModel.js"></script>
+    <script src="../ViewModels/OrderViewModel.js"></script>
+    <title>Orders</title>
+</head>
+<body>
+    <div id="OrderManagerView">
+        <header>
+            <h1>Order Manager</h1>
+            <div id="OrderManager-MessagingView"></div>
+        </header>
+        <section>
+            <div id="OrderManager-OrdersView"></div>
+            <div id="OrderManager-OrderView"></div>
+        </section>
+    </div>
+
+<script type="text/javascript">
+    $().ready(function () {
+        // Create the order manager and bind all the child ViewModels
+        ri.orderManagerViewModel.init(ri.ordersService, ri.messagingViewModel, ri.ordersViewModel, ri.orderViewModel);
+        ko.applyBindings(ri.orderManagerViewModel, $("#OrderManagerView").get(0));
+        
+        // Load the child views
+        $("#OrderManager-MessagingView").load("/Client/Views/MessagingView.html #MessagingView", function () {
+            ko.applyBindings(ri.orderManagerViewModel.messagingViewModel(), $("#OrderManager-MessagingView").get(0));
+        });
+
+        $("#OrderManager-OrdersView").load("/Client/Views/OrdersView.html #OrdersView", function () {
+            ko.applyBindings(ri.orderManagerViewModel.ordersViewModel(), $("#OrderManager-OrdersView").get(0));
+        });
+
+        $("#OrderManager-OrderView").load("/Client/Views/OrderView.html #OrderView", function () {
+            ko.applyBindings(ri.orderManagerViewModel.orderViewModel(), $("#OrderManager-OrderView").get(0));
+        });
+
+        // Load the orders data
+        ri.orderManagerViewModel.ordersViewModel().load();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+﻿/* Colors */
+/*
+    accent: rgba(12,172,0,1)
+    accent-light: rgba(12,172,0,0.3)
+    normal: rgba(255,255,255,1)
+    text: rgba(0,0,0,1)
+    text-secondary: rgba(0,0,0,0.6)
+    text-inverted: rgba(255,255,255,1)
+    text-inverted-secondary: rgba(255,255,255,0.6)
+*/
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Segoe UI Semilight';
+    font-size: 11pt;
+    color: rgba(0,0,0,1);
+    background-color: rgba(255,255,255,1);
+}
+
+h1,h2,h3,h4 {
+    line-height: 1;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: 'Segoe UI Light';
+    font-weight: normal;
+}
+h1 {
+    font-size: 42pt;
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 20pt;
+}
+h3 {
+    font-family: 'Segoe UI Semibold';
+    font-size: 11pt;
+}
+
+a {
+    font-family: 'Segoe UI Semilight';
+    font-size: 11pt;
+}
+
+a.navigation {
+    font-family: 'Segoe UI';
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    list-style:none;
+    padding: 20px 0px;  
+}
+
+
+input {
+    height: 44px;
+    border: 2px solid rgba(12,172,0,1);
+    outline: none;
+    padding: 10px;
+    font-family: 'Segoe UI';
+    font-size: 11pt;
+}
+
+input[type=button],input[type=submit] {
+    font-family: 'Segoe UI Semibold'
+}
+
+input[type=text] {
+    width: 100%;
+}
+
+/* Global Classes */
+.secondary-text {
+    color: rgba(0,0,0,0.6);
+    font-size: 11pt;
+}
+
+.selected .secondary-text {
+    color: rgba(255,255,255,0.6);
+    font-size: 11pt;
+
+}
+
+.inline {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.inline:last-child {
+    margin-right: 0px;
+}
+
+
+.column {
+    float: left;    
+}
+
+.small {
+    width: 75px;
+}
+.medium {
+    width: 150px;
+}
+.large {
+    width: 250px;
+}
+
+/* Metro overrides */
+h1 {
+    display: none;
+}
+h2 {
+    font-size: 42pt;
+    margin-bottom: 20px;
+}
+
+
+/* Order Manager */
+#OrderManagerView #OrderManager-OrdersView {
+    padding: 40px 60px 0px 60px;
+    width: 25%;
+    float: left;
+    background-color: rgba(12,172,0,0.3);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+#OrderManagerView #OrderManager-OrderView {
+    padding: 40px 60px 0px 60px;
+    width: 75%;
+    height: 100%;
+    float: left;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: 25%;
+}
+
+/* Orders */
+#OrdersView input[type=button],
+#OrdersView input[type=submit] {
+    display: none;
+}
+
+#OrdersView ul {
+    margin: 25px -60px 0px  -60px;
+}
+
+#OrdersView li {
+    cursor: pointer;
+    padding: 20px 60px;
+}
+
+#OrdersView li.selected {
+    background-color: rgba(12, 172, 0, 1);
+    color: rgba(255,255,255,1);
+    cursor: default;
+}
+
+#OrdersView label {
+    display: none;
+}
+
+#OrdersView li span:last-child {
+    display: none;
+}
+
+
+
+/* Order */
+#OrderView {
+    margin-top: -20px;
+}
+#OrderView h2 {
+    visibility: hidden;
+}
+
+#OrderView li {
+    padding-top: 0px;
+}
+
+#OrderView input[type=submit] {
+    visibility: hidden;
+    position: absolute;
+}
+
+
+#OrderInformation,#OrderDates {
+    width: 25%;
+}
+
+#ShipmentInformation {
+    width: 40%;
+    margin: 0px 20px;
+}
+
+
+/* Messages */
+#Messages {
+    position: absolute;
+    top: 60px;
+    right: 0px;
+    width: 300px;
+    z-index: 1;
+}
+
+.messageContainer {
+    padding: 20px;
+    color: rgba(255,255,255,1);
+}
+
+.messageContainer span:first-child {
+    float:right;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: -11px;
+    margin-left: 40px;
+    padding: 10px;
+}
+
+.error {
+    background-color: red;
+}
+
+.warning {
+    background-color: orange;
+}
+
+.information {
+    background-color: blue;
+}
+
+.success {
+    background-color: rgba(12,172,0,1);
+}

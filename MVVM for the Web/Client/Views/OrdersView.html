@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../../Content/Default.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+    <script src="../../Scripts/knockout-2.2.0.js"></script>
+    <script src="../../Scripts/knockout.mapping-latest.js"></script>
+    <script src="../../Scripts/knockout-postbox.min.js"></script>
+    <script src="../knockout.bindingHelpers.js"></script>
+    <script src="../Services/OrdersService.js"></script>
+    <script src="../ViewModels/OrdersViewModel.js"></script>
+    <title>Orders</title>
+</head>
+<body>
+    <div id="OrdersView">
+        <header>
+            <h2>Orders</h2>
+        </header>
+        <section>
+            <ul data-bind="foreach: entityCollection">
+                <li data-bind="click: $parent.select, css: {'selected': $root.entity() === $data}">
+                    <label>Order Number:</label><span data-bind="text: OrderNumber" class="primary"></span><br />
+                    <label>Order Date:</label><span data-bind="date: OrderDate" class="secondary-text"></span><br />
+                    <label>Required Date:</label><span data-bind="date: RequiredDate" class="secondary-text"></span>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+<script type="text/javascript">
+    $().ready(function () {
+        ri.ordersViewModel.init(ri.ordersService);
+        ko.applyBindings(ri.ordersViewModel, $("#OrdersView").get(0));
+        ri.ordersViewModel.load(1);
+    });
+</script>
+</body>
+</html>

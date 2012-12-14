@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../../Content/Default.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+    <script src="../../Scripts/knockout-2.2.0.js"></script>
+    <script src="../../Scripts/knockout.mapping-latest.js"></script>
+    <script src="../../Scripts/knockout-postbox.min.js"></script>
+    <script src="../knockout.bindingHelpers.js"></script>
+    <script src="../ViewModels/MessagingViewModel.js"></script>
+    <title>Messaging</title>
+</head>
+<body>
+    <div id="MessagingView">
+        <section>
+            <!--div data-bind="text: ko.toJSON($data, null, 2)"></div>-->
+            <div class="error messageContainer" data-bind="text: errorMessage, undefinedToVisibilityConverter: errorMessage"></div>
+            <div class="success messageContainer" data-bind="text: successMessage, undefinedToVisibilityConverter: successMessage"></div>
+        </section>
+    </div>
+
+<script type="text/javascript">
+    $().ready(function () {
+        ko.applyBindings(ri.messagingViewModel, $("#MessagingView").get(0));
+    });
+</script>
+</body>
+</html>
