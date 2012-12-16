@@ -14,7 +14,10 @@ ri.ordersService = (function () {
 
     var saveOrder = function (order) {
         var url = "/api/orders";
-        return $.post(url, order);
+        return $.ajax({
+            url: url,
+            type: 'PUT',
+            data: order});
     };
 
     return {

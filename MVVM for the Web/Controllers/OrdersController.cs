@@ -22,8 +22,8 @@ namespace MVVMWeb.Controllers
             return OrdersHelper.Instance.FirstOrDefault(o => o.OrderId == id);
         }
 
-        // POST api/orders
-        public Order Post(Order order)
+        // PUT api/orders
+        public Order Put(Order order)
         {
             order.OrderDate = DateTime.Now;
             return OrdersHelper.UpdateOrder(order);
