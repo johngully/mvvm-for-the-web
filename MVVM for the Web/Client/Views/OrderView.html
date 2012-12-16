@@ -71,7 +71,7 @@
     $().ready(function () {
         ri.orderViewModel.init(ri.ordersService);
         ko.applyBindings(ri.orderViewModel, $("#OrderView").get(0));
-        ri.orderViewModel.load();
+        ri.orderViewModel.load(1);
     });
 </script>
 </body>

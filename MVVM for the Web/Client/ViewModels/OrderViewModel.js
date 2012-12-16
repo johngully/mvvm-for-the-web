@@ -13,10 +13,11 @@ ri.orderViewModel = (function () {
     var load = function (orderId) {
         return ordersService.getOrder(orderId)
         .success(function (data) {
-            // NOTE: It is important to put the additional () 
-            //       on the end of the mapping call.
-            var order = ko.mapping.fromJS(data);
-            entity(order);
+            // NOTE: The ko.mapping documentation states that you can 
+            //       map to a specified target object, but the following
+            //       code does not appear to funcation as documented.
+            //ko.mapping.fromJS(data, {}, entity);
+            entity(ko.mapping.fromJS(data));
         })
         .error(function (xhr, status, error) {
             ko.postbox.publish("ErrorMessage", "Order could not be loaded");
@@ -27,7 +28,7 @@ ri.orderViewModel = (function () {
         var order = ko.toJS(entity);
         ordersService.saveOrder(order)
         .success(function (data) {
-            ko.mapping.fromJS(data, entity);
+            entity(ko.mapping.fromJS(data));
             ko.postbox.publish("SuccessMessage", "Order saved successfully");
         })
         .error(function (xhr, status, error) {

@@ -13,11 +13,13 @@ ri.ordersViewModel = (function () {
     var load = function () {
         return ordersService.getOrders()
         .success(function (data) {
-            // NOTE: It is important to put the additional () 
-            //       on the end of the mapping call.
-            var orders = ko.mapping.fromJS(data)();
-            entityCollection(orders);
-            entity(orders[0]); // Select the first order
+            ko.mapping.fromJS(data, {}, entityCollection);
+
+            // Select the first order
+            if (entityCollection().length) {
+                var firstOrder = entityCollection()[0];
+                select(firstOrder);
+            }
         })
         .error(function (xhr, status, error) {
             ko.postbox.publish("ErrorMessage", "Orders could not be loaded");
