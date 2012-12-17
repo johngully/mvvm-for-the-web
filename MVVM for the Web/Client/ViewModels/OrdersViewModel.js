@@ -7,6 +7,10 @@ ri.ordersViewModel = (function () {
     var ordersService = ko.observable();
     
     var init = function (dataService) {
+        if (!dataService) {
+            throw new ReferenceError("Argument undefined: dataService");
+        }
+
         ordersService = dataService;
     };
 

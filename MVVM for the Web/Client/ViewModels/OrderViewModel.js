@@ -7,6 +7,10 @@ ri.orderViewModel = (function () {
     var ordersService = ko.observable();
 
     var init = function (dataService) {
+        if (!dataService) {
+            throw new ReferenceError("Argument undefined: dataService");
+        }
+
         ordersService = dataService;
     };
 
@@ -26,7 +30,7 @@ ri.orderViewModel = (function () {
 
     var save = function () {
         var order = ko.toJS(entity);
-        ordersService.saveOrder(order)
+        return ordersService.saveOrder(order)
         .success(function (data) {
             entity(ko.mapping.fromJS(data));
             ko.postbox.publish("SuccessMessage", "Order saved successfully");

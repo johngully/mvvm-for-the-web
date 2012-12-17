@@ -135,6 +135,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Client\Services\OrdersService.js" />
+    <Content Include="Client\Tests\MessagingViewModelTests.js" />
+    <Content Include="Client\Tests\OrdersViewModelTests.js" />
+    <Content Include="Client\Tests\OrderViewModelTests.js" />
+    <Content Include="Client\Tests\Scripts\chai.js" />
+    <Content Include="Client\Tests\TestRunner.css" />
+    <Content Include="Client\Tests\Scripts\mocha.js" />
+    <Content Include="Client\Tests\Scripts\sinon-1.5.2.js" />
+    <Content Include="Client\Tests\TestRunner.html" />
     <Content Include="Client\ViewModels\MessagingViewModel.js" />
     <Content Include="Client\ViewModels\OrderManagerViewModel.js" />
     <Content Include="Client\ViewModels\OrdersViewModel.js" />
