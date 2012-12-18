@@ -145,6 +145,7 @@
     <Content Include="Client\Tests\TestRunner.html" />
     <Content Include="Client\ViewModels\MessagingViewModel.js" />
     <Content Include="Client\ViewModels\OrderManagerViewModel.js" />
+    <Content Include="Client\Tests\OrdersServiceFake.js" />
     <Content Include="Client\ViewModels\OrdersViewModel.js" />
     <Content Include="Client\ViewModels\OrderViewModel.js" />
     <Content Include="Client\Views\MessagingView.html" />
