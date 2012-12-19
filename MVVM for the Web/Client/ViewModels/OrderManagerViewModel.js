@@ -14,6 +14,7 @@ ri.orderManagerViewModel = (function () {
         orderViewModel(order);
 
         // Initialize the child ViewModels
+        messagingViewModel().init();
         ordersViewModel().init(ordersService);
         orderViewModel().init(ordersService);
     };    

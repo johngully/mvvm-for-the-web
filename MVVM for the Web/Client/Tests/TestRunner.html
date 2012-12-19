@@ -29,10 +29,9 @@
     <script src="../ViewModels/OrderViewModel.js" type="text/javascript"></script>
     <script src="OrderViewModelTests.js" type="text/javascript"></script>
     <!-- MessagingViewModel -->
-    <!--
     <script src="../ViewModels/MessagingViewModel.js" type="text/javascript"></script>
     <script src="MessagingViewModelTests.js" type="text/javascript"></script>
-        -->
+    
     <script>
         // Create shortcuts to the assertion libraries
         var should = chai.should();
@@ -40,8 +39,8 @@
 
         // Stub the message bus so that the tests 
         // do not interact with each other
-        ko.postbox.publish = sinon.stub();
-        ko.postbox.subscribe = sinon.stub();
+        sinon.stub(ko.postbox, "publish");
+        sinon.stub(ko.postbox, "subscribe");
 
         // Run the test
         mocha.run();
